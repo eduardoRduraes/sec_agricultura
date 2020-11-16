@@ -1,5 +1,7 @@
 import knex from '../database/connection';
 import { Request, Response } from 'express';
+import { resolve } from 'path';
+import { rejects } from 'assert';
 
 
 class ProfessionalController {
@@ -16,9 +18,12 @@ class ProfessionalController {
 
   async show(req: Request, res: Response) {
 
-    const pro = await knex("professional").where("id", req.params.id).first().catch((error) => {
+    const trx = await knex.transaction();
+
+    const pro = await trx("professional").where("id", req.params.id).first();
+
+    if (!pro)
       return res.status(400).json({ message: "Usuario não encontrado!!!" });
-    });
 
     return res.status(200).json(pro);
 
@@ -45,7 +50,6 @@ class ProfessionalController {
 
   async delete(req: Request, res: Response) {
 
-
     const { id } = req.params;
 
     const pro = await knex("professional").where("id", id).first();
@@ -59,7 +63,6 @@ class ProfessionalController {
     await trx("professional").where('id', id).delete().then(trx.commit).catch();
 
     return res.status(200).json({ message: `usuario deletado com sucesso ${pro}` });
-
 
   }
 
