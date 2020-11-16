@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+import api from '../../services/api';
 import './styles.css';
 
-export default function List() {
+// import { Container } from './styles';
+
+const List: React.FC = () => {
+  const [professional, setProfessional] = useState('');
+
+  const professionalList = async () => {
+    const response = await api.get("professioal");
+  }
+
+
+  function handleDelete(id: number) {
+    return "null";
+  }
   return (
-    <div className="lista">
+
+    < div className="lista" >
       <table>
         <thead>
           <th scope="col">Nome</th>
@@ -14,18 +30,23 @@ export default function List() {
           <th scope="col">OPÇÕES</th>
         </thead>
         <tbody>
-          <th scope="row">Eduardo R. Durães</th>
-          <th scope="row">Rua Ceará</th>
-          <th scope="row">Centro</th>
-          <th scope="row">00-000000000</th>
-          <th scope="row">Tratorista</th>
-          <th>
-            <a href="">EDITAR</a>
-            <a href="">EXCLUIR</a>
-            <a href="">DETALHAR</a>
-          </th>
+
+
+          <tr>
+            <th scope="row">Eduardo R. Durães</th>
+            <th scope="row">Rua Ceará</th>
+            <th scope="row">Centro</th>
+            <th scope="row">00-000000000</th>
+            <th scope="row">Tratorista</th>
+            <th>
+              <Link to="">EXCLUIR</Link>
+              <Link to="">DETALHAR</Link>
+            </th>
+          </tr>
         </tbody>
       </table>
     </div >
   )
 }
+
+export default List;

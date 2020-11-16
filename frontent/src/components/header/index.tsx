@@ -1,6 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import logo from '../../assets/img/icone-prefeitura.png';
 import lupa from '../../assets/img/lupa.svg';
+
 
 import './styles.css';
 
@@ -8,22 +11,26 @@ import './styles.css';
 // import { Container } from './styles';
 
 const Header: React.FC = () => {
+  function handleFind() {
+    return "null";
+  }
+
   return (
     <div className="rodape">
       <div className="rodape_principal">
-        <a href="#">
+        <Link to="#">
           <img src={logo} alt="" />
-        </a>
+        </Link>
         <div className="pesquisa">
-          <input type="text" id="nome" name="nome" placeholder="Digite aqui" />
-          <a href="">
+          <input type="search" id="nome" name="nome" placeholder="Digite aqui" />
+          <a href="#" >
             <img src={lupa} alt="" />
-          </a>
+          </a >
         </div>
 
-        <a href="#" className="btn">NOVO</a>
+        <Link to="/profissonal/novo" className="btn">NOVO</Link>
       </div>
-    </div>
+    </div >
   );
 }
 

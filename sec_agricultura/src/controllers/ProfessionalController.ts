@@ -1,7 +1,5 @@
 import knex from '../database/connection';
 import { Request, Response } from 'express';
-import { resolve } from 'path';
-import { rejects } from 'assert';
 
 
 class ProfessionalController {
