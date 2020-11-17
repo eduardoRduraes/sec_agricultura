@@ -10,8 +10,8 @@ export default function Routes() {
   return (
     <BrowserRouter>
       <Route path="/" exact component={App} />
-      <Route path="/profissional/novo" component={Novo} />
-      <Route path="/profissional/detalhar" component={Detalhar} />
+      <Route path="/pro/novo" component={Novo} />
+      <Route path="/pro/detalhar" component={Detalhar} />
     </BrowserRouter>
   )
 }

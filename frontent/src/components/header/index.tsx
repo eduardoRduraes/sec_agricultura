@@ -26,7 +26,7 @@ const Header: React.FC = () => {
           </Link >
         </div>
 
-        <Link to="/profissonal/novo" className="btn">NOVO</Link>
+        <Link to="/pro/novo" className="btn">NOVO</Link>
       </div>
     </div >
   );

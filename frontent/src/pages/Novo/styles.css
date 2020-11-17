@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  font-weight: bold;
+  color: #8c8c8c;
+}
+
+.form button {
+  margin-top: 10px;
+  flex-grow: 0;
+  width: 70px;
+  height: 30px;
+}
+
+.form input {
+  border: none;
+  height: 35px;
+  border-radius: 6px;
+  background: #f2f2f2;
+  margin-bottom: 8px;
+}
+
+.sexo label {
+  margin-right: 5px;
+}
+.sexo,
+.situacao {
+  display: flex;
+  align-items: center;
+}
