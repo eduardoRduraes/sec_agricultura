@@ -11,9 +11,7 @@ import './styles.css';
 // import { Container } from './styles';
 
 const Header: React.FC = () => {
-  function handleFind() {
-    return "null";
-  }
+
 
   return (
     <div className="rodape">
@@ -23,9 +21,9 @@ const Header: React.FC = () => {
         </Link>
         <div className="pesquisa">
           <input type="search" id="nome" name="nome" placeholder="Digite aqui" />
-          <a href="#" >
+          <Link to="#" >
             <img src={lupa} alt="" />
-          </a >
+          </Link >
         </div>
 
         <Link to="/profissonal/novo" className="btn">NOVO</Link>

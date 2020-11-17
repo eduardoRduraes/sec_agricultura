@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles.css';
 
 // import { Container } from './styles';
@@ -16,7 +17,7 @@ const Detalhar: React.FC = () => {
       <input type="text" id="telefone" name="telefone" />
       <label htmlFor="" id="profissao">Profissão </label>
       <input type="text" id="profissao" name="profissao" />
-      <a href="">SALVAR</a>
+      <Link to="#">SALVAR</Link>
     </div>
   );
 }

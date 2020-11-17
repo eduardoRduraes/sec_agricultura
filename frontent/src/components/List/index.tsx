@@ -1,22 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 import './styles.css';
 
 // import { Container } from './styles';
 
+
+interface Professional {
+  id: number;
+  name: string;
+  address: string;
+  profession: string;
+  status: boolean;
+}
+
 const List: React.FC = () => {
-  const [professional, setProfessional] = useState('');
+  const [professionals, setProfessionals] = useState<Professional[]>([]);
 
   const professionalList = async () => {
-    const response = await api.get("professioal");
+    const response = await api.get("/pro");
+    setProfessionals(response.data);
   }
 
+  useEffect(() => {
+    professionalList();
+  }, []);
 
-  function handleDelete(id: number) {
-    return "null";
+  async function handleProfessionalRemove(id: number) {
+    api.delete(`/pro/${id}`);
+    const list = professionals.filter((professional) => professional.id !== id);
+    setProfessionals(list)
   }
+
   return (
 
     < div className="lista" >
@@ -24,25 +40,25 @@ const List: React.FC = () => {
         <thead>
           <th scope="col">Nome</th>
           <th scope="col">Endereço</th>
-          <th scope="col">Bairro</th>
-          <th scope="col">Telefone</th>
           <th scope="col">Profissão</th>
+          <th scope="col">STATUS</th>
           <th scope="col">OPÇÕES</th>
         </thead>
         <tbody>
 
+          {professionals.map(professional => (
+            <tr key={professional.id}>
+              <td>{professional.name}</td>
+              <td>{professional.address}</td>
+              <td>{professional.profession}</td>
+              <td>{professional.status}</td>
+              <td>
+                <button>DETALHAR</button>
+                <button onClick={() => handleProfessionalRemove(professional.id)}>EXCLUIR</button>
+              </td>
+            </tr>
+          ))}
 
-          <tr>
-            <th scope="row">Eduardo R. Durães</th>
-            <th scope="row">Rua Ceará</th>
-            <th scope="row">Centro</th>
-            <th scope="row">00-000000000</th>
-            <th scope="row">Tratorista</th>
-            <th>
-              <Link to="">EXCLUIR</Link>
-              <Link to="">DETALHAR</Link>
-            </th>
-          </tr>
         </tbody>
       </table>
     </div >
